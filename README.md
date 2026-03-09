@@ -1,6 +1,10 @@
 # HeartBit
 
+본 프로젝트인 ‘HeartBit' 는 실시간 거래 데이터를 기반으로 한 모의 투자 거래 플랫폼입니다.<br>
+기존 가상자산 거래소 플랫폼인 업비트를 모티브로 하여 실제 거래 서비스 구조를 구현하였습니다.
+
 ## 🛠 기술 스택
+### Frontend
 <div style="display:flex;gap:10px;flex-wrap:wrap;">
   <img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=React&logoColor=black">
   <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=TypeScript&logoColor=white">
@@ -14,6 +18,20 @@
   <img src="https://img.shields.io/badge/Yup-222222?style=flat-square&logoColor=white">
   <img src="https://img.shields.io/badge/Vitest-6E9F18?style=flat-square&logo=Vitest&logoColor=white">
   <img src="https://img.shields.io/badge/Cypress-17202C?style=flat-square&logo=Cypress&logoColor=white">
+</div>
+
+### Backend
+<div style="display:flex;gap:10px;flex-wrap:wrap;">
+  <img src="https://img.shields.io/badge/Java-007396?style=flat-square&logo=OpenJDK&logoColor=white">
+  <img src="https://img.shields.io/badge/Spring_Boot-6DB33F?style=flat-square&logo=Spring-Boot&logoColor=white">
+  <img src="https://img.shields.io/badge/Spring_Security-6DB33F?style=flat-square&logo=Spring-Security&logoColor=white">
+  <img src="https://img.shields.io/badge/JWT-000000?style=flat-square&logo=JSON-Web-Tokens&logoColor=white">
+  <img src="https://img.shields.io/badge/Spring_Security_Filter_Chain-6DB33F?style=flat-square&logo=Spring-Security&logoColor=white">
+  <img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=PostgreSQL&logoColor=white">
+  <img src="https://img.shields.io/badge/JPA-59666C?style=flat-square&logo=Hibernate&logoColor=white">
+  <img src="https://img.shields.io/badge/RESTful_API-005571?style=flat-square&logoColor=white">
+  <img src="https://img.shields.io/badge/Gradle-02303A?style=flat-square&logo=Gradle&logoColor=white">
+  <img src="https://img.shields.io/badge/Swagger-85EA2D?style=flat-square&logo=Swagger&logoColor=black">
 </div>
 
 
@@ -31,7 +49,7 @@
 |------|---|---|
 |<img width="1342" height="796" alt="image" src="https://github.com/user-attachments/assets/18a80419-e9df-4079-bf35-67f1fbd3f3ca" />|<img width="1642" height="960" alt="image" src="https://github.com/user-attachments/assets/02f2536d-839f-48a3-a8b2-a28bc7bdc11b" />|<img width="1810" height="1068" alt="image" src="https://github.com/user-attachments/assets/4cd80618-0246-4e2b-9a8f-0c45516ab049" />|
 |체결 목록|미체결 목록|보유자산|
-|<img width="924" height="486" alt="image" src="https://github.com/user-attachments/assets/c975cc6e-1ac3-4328-9462-49c36c763b01" />|<img width="645" height="470" alt="image" src="https://github.com/user-attachments/assets/b339304c-4cf9-4664-aca9-17abeaa5480c" />|<img width="1813" height="1069" alt="image" src="https://github.com/user-attachments/assets/c675187d-6002-4800-97d7-879dcb436086" />|
+|<img width="575" height="319" alt="image" src="https://github.com/user-attachments/assets/f992292c-5ca7-461c-92ff-1d20397b3408" />|<img width="577" height="318" alt="image" src="https://github.com/user-attachments/assets/41e42e62-8475-48e2-8da5-41cf36c09e77" />|<img width="1813" height="1069" alt="image" src="https://github.com/user-attachments/assets/c675187d-6002-4800-97d7-879dcb436086" />|
 
 ---
 
