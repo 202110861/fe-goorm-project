@@ -2,6 +2,12 @@
 
 본 프로젝트인 ‘HeartBit' 는 실시간 거래 데이터를 기반으로 한 모의 투자 거래 플랫폼입니다.<br>
 기존 가상자산 거래소 플랫폼인 업비트를 모티브로 하여 실제 거래 서비스 구조를 구현하였습니다.
+* **개발 기간**: 2025.12 ~ 2026.02
+* **팀 구성**: 총 6명 (**Full 1명**, Backend 3명, Frontend 1명, AI 1명)
+* **나의 역할**
+  * **Frontend**  (대용량 캔들 데이터의 실시간 렌더링 성능 최적화, STOMP 프로토콜을 이용한 실시간 호가, 체결, 채팅 데이터 동기화, 무한스크롤)
+  * Backend  (인증 시스템 및 토큰 재발급 구축)
+
 
 ## 🛠 기술 스택
 ### Frontend
@@ -46,23 +52,25 @@
 
 
 |전체 화면 |시세|채팅|
-|------|---|---|
+|:------:|:---:|:---:|
 |<img width="1342" height="796" alt="image" src="https://github.com/user-attachments/assets/18a80419-e9df-4079-bf35-67f1fbd3f3ca" />|<img width="1642" height="960" alt="image" src="https://github.com/user-attachments/assets/02f2536d-839f-48a3-a8b2-a28bc7bdc11b" />|<img width="1810" height="1068" alt="image" src="https://github.com/user-attachments/assets/4cd80618-0246-4e2b-9a8f-0c45516ab049" />|
-|체결 목록|미체결 목록|보유자산|
+|**체결 목록**|**미체결 목록**|**보유자산**|
 |<img width="575" height="319" alt="image" src="https://github.com/user-attachments/assets/f992292c-5ca7-461c-92ff-1d20397b3408" />|<img width="577" height="318" alt="image" src="https://github.com/user-attachments/assets/41e42e62-8475-48e2-8da5-41cf36c09e77" />|<img width="1813" height="1069" alt="image" src="https://github.com/user-attachments/assets/c675187d-6002-4800-97d7-879dcb436086" />|
 
 ---
 
 ### 🧪 2. 다층적 테스트 파이프라인 구축 (Test Automation)
 프론트엔드 코드의 무결성을 보장하고 리팩토링 안정성을 확보하기 위해 3단계 테스트 환경을 구축했습니다.
-* **단위/통합 테스트 (Vitest):** 주요 비즈니스 로직과 개별 UI 컴포넌트의 상태 변화를 검증했습니다.
-* **시각적 회귀 테스트 (Storybook + Chromatic):** UI 공통 컴포넌트를 독립적으로 문서화하고 CI/CD 과정에 Chromatic을 연동하여, 리팩토링 시 발생하는 의도치 않은 UI/레이아웃 깨짐 현상(Side Effect)을 배포 전에 완벽하게 차단했습니다.
-* **E2E 테스트 자동화 (Cypress):** 서비스의 가장 핵심인 **'매수/매도'** 결제 플로우를 실제 브라우저 환경과 동일하게 시나리오화하여 검증함으로써, 수동 QA 시간을 대폭 단축하고 과감한 리팩토링이 가능한 배포 자신감을 확보했습니다.
+|단위/통합 테스트 <br> (Vitest)| 시각적 회귀 테스트 <br> (Storybook + Chromatic) | E2E 테스트 자동화 <br> (Cypress) |
+|:------:|:---:|:---:|
+|<img width="781" height="197" alt="image" src="https://github.com/user-attachments/assets/4d764aff-b458-4431-9639-ddfd31b23299" />|[chromatic 연동 사이트 바로가기](https://69818073f20a97befcbf4016-ywxmkrnypa.chromatic.com/?path=/story/markettableitem--default)|![Video-Project-1](https://github.com/user-attachments/assets/18d7d166-9cdb-4a00-b6e2-9a8452107bdf)|
+|주요 비즈니스 로직과 <br> 개별 UI 컴포넌트의 상태 변화를 검증했습니다. | UI 공통 컴포넌트를 독립적으로 문서화하고<br>CI/CD 과정에 Chromatic을 연동하여, 리팩토링 시 발생하는 의도치 않은 UI/레이아웃 깨짐 현상(Side Effect)을 배포 전에 차단했습니다.| 서비스의 가장 핵심인 **'매수/매도'** 결제 플로우를 <br> 실제 브라우저 환경과 동일하게 시나리오화하여 <br> 검증함으로써, 수동 QA 시간을 대폭 단축했습니다.|
+
 
 ---
 
 ### 🚀 3. 성능 및 렌더링 최적화
-사용자 경험(UX) 향상과 Lighthouse 지표 한계 돌파를 위해 로딩 및 렌더링 단계를 집중적으로 최적화했습니다.
+사용자 경험(UX) 향상과 Lighthouse 성능 향상을 위해 로딩 및 렌더링 단계를 집중적으로 최적화했습니다.
 
 #### 📦 3-1. 초기 로딩 속도 최적화
 * **무한 스크롤 적용:** 대량의 데이터(채팅, 거래 내역 등) 조회 시 무한 스크롤을 도입하여 초기 데이터 로딩 및 DOM 렌더링 부담을 줄였습니다.
@@ -70,6 +78,14 @@
     * `React.lazy`를 활용한 라우트 기반 코드 스플리팅(Code Splitting) 적용.
     * Vite 환경에서 `manualChunks` 설정을 통해 무거운 차트 라이브러리와 벤더(Vendor) 코드를 별도 청크로 분리.
     * 빌드 시 Gzip 텍스트 압축(`vite-plugin-compression`)을 활성화하여 브라우저의 다운로드 전송량을 획기적으로 최소화.
+ 
+* 전
+  * <img width="549" height="61" alt="image" src="https://github.com/user-attachments/assets/3ce2b961-fcd1-40a5-848f-cde7f38500ff" />
+
+* 후
+  * <img width="549" height="175" alt="image" src="https://github.com/user-attachments/assets/a985a664-95b0-4c77-9260-a0044f09b60e" />
+
+
 
 #### ⚡ 3-2. 렌더링 및 UI/UX 최적화 (TBT, CLS 개선)
 * **불필요한 리렌더링 제거:** 보유 자산, 헤더, 시세 등 상태 변경이 적은 컴포넌트에 `React.memo`를 적용하여 불필요한 렌더링 비용을 줄였습니다.
