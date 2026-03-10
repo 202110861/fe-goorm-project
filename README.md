@@ -69,30 +69,25 @@
 
 ---
 
-### 🚀 3. 성능 및 렌더링 최적화
-사용자 경험(UX) 향상과 Lighthouse 성능 향상을 위해 로딩 및 렌더링 단계를 집중적으로 최적화했습니다.
-
-#### 📦 3-1. 초기 로딩 속도 최적화
+### 🚀 3. 초기 로딩 속도 최적화
 * **무한 스크롤 적용:** 대량의 데이터(채팅, 거래 내역 등) 조회 시 무한 스크롤을 도입하여 초기 데이터 로딩 및 DOM 렌더링 부담을 줄였습니다.
 * **번들 사이즈 최적화 (초기 메인 번들 81% 경량화):**
     * `React.lazy`를 활용한 라우트 기반 코드 스플리팅(Code Splitting) 적용.
     * Vite 환경에서 `manualChunks` 설정을 통해 무거운 차트 라이브러리와 벤더(Vendor) 코드를 별도 청크로 분리.
     * 빌드 시 Gzip 텍스트 압축(`vite-plugin-compression`)을 활성화하여 브라우저의 다운로드 전송량을 획기적으로 최소화.
  
-* 전
-  * <img width="549" height="61" alt="image" src="https://github.com/user-attachments/assets/3ce2b961-fcd1-40a5-848f-cde7f38500ff" />
-
-* 후
-  * <img width="549" height="175" alt="image" src="https://github.com/user-attachments/assets/a985a664-95b0-4c77-9260-a0044f09b60e" />
+| 전 |  후  |
+|---|---|
+|<img width="549" height="61" alt="image" src="https://github.com/user-attachments/assets/3ce2b961-fcd1-40a5-848f-cde7f38500ff" />|<img width="549" height="175" alt="image" src="https://github.com/user-attachments/assets/a985a664-95b0-4c77-9260-a0044f09b60e" />|
 
 
 
-#### ⚡ 3-2. 렌더링 및 UI/UX 최적화 (TBT, CLS 개선)
+### ⚡4. 렌더링 및 UI/UX 최적화 (TBT, CLS 개선)
 * **불필요한 리렌더링 제거:** 보유 자산, 헤더, 시세 등 상태 변경이 적은 컴포넌트에 `React.memo`를 적용하여 불필요한 렌더링 비용을 줄였습니다.
 * **무거운 연산 메모이제이션 (TBT 0ms 달성):** 실시간 채팅 수신 시 과거 데이터 배열과 웹소켓 데이터를 합치고 정렬하는 무거운 O(N) 병합 로직을 `useMemo`로 캐싱했습니다. 이를 통해 사용자의 키보드 입력(타이핑) 시 발생하는 잦은 리렌더링 병목 연산을 제거하고 메인 스레드 지연(Total Blocking Time)을 완벽히 해소했습니다.
 * **스크롤 보정 및 시각적 덜컥거림 방지 (CLS 개선):** 무한 스크롤로 과거 과거 메시지를 불러오거나 새 메시지가 수신될 때 스크롤이 튀는 현상(Layout Shift)을 방지하기 위해 `useLayoutEffect`를 적용했습니다. 브라우저가 화면을 그리기 직전(Paint 이전)에 동기적으로 스크롤 높이를 계산하고 보정하여 시각적 안정성을 크게 향상시켰습니다.
 
-#### 📊 3-3. 최적화 결과 (Lighthouse)
+### 📊 5. 최적화 결과 (Lighthouse)
 적극적인 최적화 적용 결과, 네트워크 다운로드 용량과 웹 핵심 성능 지표(Core Web Vitals)를 크게 개선했습니다.
 
 * **메인 번들 사이즈 최적화:** `797 kB` ➡️ `149 kB` (**약 81% 감소 / 648 kB 경량화**)
